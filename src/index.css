@@ -1,13 +1,58 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.bookImage{
+  width: 60px;
+  
+}
+.productimage{
+  width: 100%;
+  height: 430px;
+}  
+.profile{
+  width: 60px;
+  border-radius: 150px;
+}
+.books{
+  padding: 9.349px 114px 10.228px 113px;
+}
+.navBar{
+  justify-content: center;
+  padding: 9.349px 114px 10.228px 113px;
+  align-items: center;
+  gap: 75px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media screen and (max-width: 767px) {
+  .navBar, .books{
+    padding: 0px;
+  }
+}
+.background{
+  background-color: #004D6D;
+  padding: 100px 115px;
+}
+.pera{
+  color: #FFF;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+}
+.lorem{
+  color: #FFF;
+
+font-size: 30px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: capitalize;
+}
+
+.section{
+  background-image: url('Media/Section2.png');
+  background-size: cover;
 }
