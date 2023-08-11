@@ -1,13 +1,17 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUser } from "../store/thunk/fetchUser";
+import Star from "./Star";
+import Modal from "./Modal";
+import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 
 function Books() {
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
+  const [modalData, setModalData] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [isAbsolute, setIsAbsolute] = useState(true);
+  // Calling State
   const books = useSelector((state) => {
-    console.log(state.users.users);
     return state.users;
   });
 
@@ -15,29 +19,43 @@ function Books() {
     dispatch(fetchUser());
   }, []);
 
+  const openModal = (data) => {
+    setModalData(data);
+    setShowModal(true);
+    setIsAbsolute(!true);
+    document.body.classList.add("overflow-hidden");
+  };
+
   return (
-    <div className="books grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mx-4 lg:mx-16">
-      {books.users.map((item, index) => {
-        return (
-          <div
-            key={index}
-            className="max-w-xs m-4 border rounded overflow-hidden"
-          >
-            <img
-              className="productimage"
-              src={item.imageLink}
-              alt="Book cover"
-            />
-            <div className="p-4">
-              {console.log(item)}
-              <p className="font-bold">Author: {item.author}</p>
-              <strong className="text-sm">{item.rating}</strong>
-              <br />
-              <strong className="text-sm">${item.price}</strong>
-            </div>
+    <div className="books grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 mx-4 lg:mx-16">
+      {showModal && (
+        <Modal
+          modalData={modalData}
+          postion="fixed"
+          showModal={setShowModal}
+          isAbsolute={setIsAbsolute}
+        />
+      )}
+      {books.users.map((item, index) => (
+        <div
+          key={item.title + index}
+          onClick={() => openModal(item)}
+          className={`max-w-xs m-4 border rounded overflow-hidden ${
+            isAbsolute ? "relative" : "static"
+          }`}
+        >
+          <div className={`heart ${isAbsolute ? "absolute" : "static"}`}>
+            {item.is_liked ? <AiFillHeart /> : <AiOutlineHeart />}
           </div>
-        );
-      })}
+          <img className="productimage" src={item.imageLink} alt="Book cover" />
+
+          <div className="p-4">
+            <p className="font-bold">Author: {item.author}</p>
+            <Star stars={item.rating} />
+            <strong className="text-sm">${item.price}</strong>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }

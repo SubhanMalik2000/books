@@ -6,7 +6,7 @@ function SreachBar() {
       <div className="relative">
         <input
           type="text"
-          className=" bg-gray-100 w-full border-2 p-2 rounded-full"
+          className=" bg-gray-100 w-full border-2 p-3 rounded-full"
           aria-label="Search talk"
           placeholder="Search"
         />

@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+.icon{
+  color:#ffca0f
+}
 .bookImage{
   width: 60px;
   
@@ -55,4 +58,57 @@ text-transform: capitalize;
 .section{
   background-image: url('Media/Section2.png');
   background-size: cover;
+}
+
+.font{
+  color: #000;
+font-size: 26px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+text-transform: capitalize;
+}
+
+.fontp p{
+  color: #000;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+text-transform: capitalize;
+}
+
+.buttoning{
+  border-radius: 5px;
+  background: #004D6D;
+  color:white;
+  padding:5px;
+  width: 230px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.handlewidth{
+  width: 600px;
+  height: 500px;
+  flex-shrink: 0;
+}
+
+.imgwidth{
+  width: 55%;
+  border-radius: 8px;
+}
+
+.heart{
+  color:red;
+  border-radius: 200px;
+  font-size: 35px;
+  background-color: #FFF;
+  top:10px;
+  padding: 10px;
+  right: 10px;
+}
+
+.mainbook{
+  position: relative;
 }
